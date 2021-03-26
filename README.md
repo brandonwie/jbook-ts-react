@@ -1,5 +1,7 @@
 # Dynamic Programming Env
 
+    <a href="https://img.shields.io/badge/TypeScript-v4.2.3-blue"><img src="https://img.shields.io/badge/TypeScript-v4.2.3-blue"></a>
+
 ## How to run
 
 >```$ jbook serve```
