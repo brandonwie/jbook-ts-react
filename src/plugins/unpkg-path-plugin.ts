@@ -1,40 +1,64 @@
 import * as esbuild from 'esbuild-wasm';
 import axios from 'axios';
 
-export const unpkgPathPlugin = () => {
-  return {
-    name: 'unpkg-path-plugin',
-    setup(build: esbuild.PluginBuild) {
-      // overwrite|hijacks the path of index.js
-      build.onResolve({ filter: /.*/ }, async (args: any) => {
-        console.log('onResolve', args);
-        if(args.path === 'index.js') {
-          return { path: args.path, namespace: 'a' };
+interface UnpkgPathPlugin {
+	name: string;
+	setup: (build: esbuild.PluginBuild) => void;
+}
 
-        } else if (args.path === 'tiny-test-pkg') {
-          return { path: 'https://unpkg.com/tiny-test-pkg@1.0.0/index.js', namespace: 'a'};
-        }
-      });
-      // load up the index.js file
-      build.onLoad({ filter: /.*/}, async (args: any) => {
-        console.log('onLoad', args);
+const unpkgPathPlugin = (): UnpkgPathPlugin => {
+	return {
+		name: 'unpkg-path-plugin',
+		setup(build: esbuild.PluginBuild) {
+			// overwrite|hijacks the path of index.js
+			build.onResolve({ filter: /.*/ }, async (args: any) => {
+				console.log('onResolve', args);
 
-        if (args.path === 'index.js') {
-          return {
-            loader: 'jsx',
-            contents: `
-              const message = require('tiny-test-pkg');
-              console.log(message);
+				if (args.path === 'index.js') {
+					return { path: args.path, namespace: 'a' };
+				}
+
+				// handle resolution of relative files
+				if (args.path.includes('./') || args.path.includes('../')) {
+					return {
+						namespace: 'a',
+						path: new URL(
+							args.path,
+							'https://unpkg.com' + args.resolveDir + '/'
+						).href,
+					};
+				}
+
+				return {
+					namespace: 'a',
+					path: `https://unpkg.com/${args.path}`,
+				};
+			});
+
+			// load up the index.js file
+			build.onLoad({ filter: /.*/ }, async (args: any) => {
+				console.log('onLoad', args);
+
+				if (args.path === 'index.js') {
+					return {
+						loader: 'jsx',
+						contents: `
+              import React, { useState } from 'react-select'
+              console.log(React, useState);
             `,
-          };
-        }
+					};
+				}
 
-        const {data} = await axios.get(args.path);
-        return {
-          loader: 'jsx',
-          contents: data,
-        }
-      });
-    },
-  };
+				const { data, request } = await axios.get(args.path);
+				console.log(request);
+				return {
+					loader: 'jsx',
+					contents: data,
+					resolveDir: new URL('./', request.responseURL).pathname,
+				};
+			});
+		},
+	};
 };
+
+export default unpkgPathPlugin;
