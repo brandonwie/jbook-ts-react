@@ -1,8 +1,11 @@
 # Dynamic Programming Env
 
+- Author: Seokhyun Wie (Brandon)
+- Email: brandonwie.cs@gmail.com
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-v4.2.3-informational?style=flat-sqaure)](https://www.typescriptlang.)
 [![React](https://img.shields.io/badge/React-v17.0.2-informational?style=flat-sqaure)](https://reactjs.org/)
-[![esbuild\-wasm](https://img.shields.io/badge/esbuild--wasm-v0.8.27-yellow)](https://github.com/evanw/esbuild)
+[![esbuild--wasm](https://img.shields.io/badge/esbuild--wasm-v0.8.27-yellow)](https://github.com/evanw/esbuild)
 [![build](https://img.shields.io/badge/build-onContruction-important)](https://github.com/brandonwie/jbook-ts-react)
 
 # How to run
@@ -82,5 +85,21 @@ it can deal with both `common js` and `ES Modules`
 
 ## esbuild-wasm NPM module
 
-ESBuild can transpile + bundle code all in the browser.
+- ESBuild can transpile + bundle code all in the browser.
 Small amount of JS(user input) => WASM (Go Lang bundler compiled to work in the browser)
+- It is primarily intended to only be used in the browser. ([documentation](https://esbuild.github.io/getting-started/#install-the-wasm-version))
+
+### ESBuild Bundling Process
+
+1. Find where the `index.js` is stored (onResolve)
+2. Attemp to load up the `index.js` file (onLoad)
+3. Parse the `index.js` file, find any import/require/exports
+4. If there's any import/require/exports, figure out where the requested file is (onResolve) => UNPKG
+5. Attemp to load up the file
+
+## UNPKG
+
+`unpkg.com/packageName`
+
+- Get around with CORS when installing NPM packages
+- Automatically find latest version
