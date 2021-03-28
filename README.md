@@ -20,7 +20,7 @@ A CLI to launch an interactive development environment for writing and documenti
 
 ## Challenges
 
-1. Code will be provided to Preview as a string. We have to execute it safely
+1. Code will be provided to Preview as a string. We have to execute it safely [How to solve?](#execution)
 2. This code might have advanced JS syntax in it (like JSX) that your browser can't execute [How to solve?](#transpiler-babel)
 3. The code might have import statements for other JS files or CSS. We have to deal with those import statements before executing the code [How to Solve?](#webpack---bundler)
 
@@ -96,11 +96,41 @@ it can deal with both `common js` and `ES Modules`
 4. If there's any import/require/exports, figure out where the requested file is (onResolve) => UNPKG
 5. Attemp to load up the file
 
-### Use localforage (indexedDB)
+### Used localforage (indexedDB) to cache
 
-## UNPKG
+### UNPKG
 
 `unpkg.com/packageName`
 
 - Get around with CORS when installing NPM packages
 - Automatically find latest version
+
+## Execution
+
+### Consideration Around Code Execution
+
+- User-provided code might throw errors and cause our program to crash
+- User-provided code might mutate the DOM, causing our program to crash
+- A use might accidentally run code provided by another malicious user
+
+### **iframe** as solution
+
+- iframe allow communication between the parent and the child
+
+```js
+parent.a; // from child html
+document.querySelector('iframe').contentWindow; // from parent to child
+```
+
+- Direct access between frames is allowed when the iframe element does not have a 'sandbox' property, or has a 'sandbox="allow-same-origin"' property
+- Domain, Port, and Protocol (http vs https) have to be the exact same
+
+- We don't use additional server to prevent direct access (as codepen.io), but we use `sandbox=''` to isolate the iframe
+
+### **SrcDocs**
+
+- An attribute of iframe
+
+### Downside of using single port for all
+
+- Cannot use a couple of features as localStorage
