@@ -1,15 +1,29 @@
 import * as esbuild from 'esbuild-wasm';
 import axios from 'axios';
+import localForage from 'localforage';
+
+const fileCache = localForage.createInstance({
+	name: 'filecache',
+});
+
+(async () => {
+	await fileCache.setItem('color', 'red');
+
+	const color = await fileCache.getItem('color');
+
+	console.log(color);
+})();
 
 interface UnpkgPathPlugin {
 	name: string;
 	setup: (build: esbuild.PluginBuild) => void;
 }
 
-const unpkgPathPlugin = (): UnpkgPathPlugin => {
+const unpkgPathPlugin = (inputCode: string): UnpkgPathPlugin => {
 	return {
 		name: 'unpkg-path-plugin',
 		setup(build: esbuild.PluginBuild) {
+			//! Resolve
 			// overwrite|hijacks the path of index.js
 			build.onResolve({ filter: /.*/ }, async (args: any) => {
 				console.log('onResolve', args);
@@ -35,6 +49,7 @@ const unpkgPathPlugin = (): UnpkgPathPlugin => {
 				};
 			});
 
+			//! Load
 			// load up the index.js file
 			build.onLoad({ filter: /.*/ }, async (args: any) => {
 				console.log('onLoad', args);
@@ -42,20 +57,32 @@ const unpkgPathPlugin = (): UnpkgPathPlugin => {
 				if (args.path === 'index.js') {
 					return {
 						loader: 'jsx',
-						contents: `
-              import React, { useState } from 'react-select'
-              console.log(React, useState);
-            `,
+						contents: inputCode,
 					};
 				}
 
+				// Check to see if we have already fetched this file
+				// and if it is in the cache
+				const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(
+					args.path
+				);
+
+				// if there is, return it immediately
+				if (cachedResult) {
+					return cachedResult;
+				}
 				const { data, request } = await axios.get(args.path);
-				console.log(request);
-				return {
+
+				const result: esbuild.OnLoadResult = {
 					loader: 'jsx',
 					contents: data,
 					resolveDir: new URL('./', request.responseURL).pathname,
 				};
+
+				// store response in cache
+				await fileCache.setItem(args.path, result);
+
+				return result;
 			});
 		},
 	};

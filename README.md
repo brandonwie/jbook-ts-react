@@ -8,9 +8,9 @@
 [![esbuild--wasm](https://img.shields.io/badge/esbuild--wasm-v0.8.27-yellow)](https://github.com/evanw/esbuild)
 [![build](https://img.shields.io/badge/build-onContruction-important)](https://github.com/brandonwie/jbook-ts-react)
 
-# How to run
+## How to run
 
->```$ jbook serve```
+> `$ jbook serve`
 
 Navigate to <http://localhost:4005> to edit.
 
@@ -24,7 +24,7 @@ A CLI to launch an interactive development environment for writing and documenti
 2. This code might have advanced JS syntax in it (like JSX) that your browser can't execute [How to solve?](#transpiler-babel)
 3. The code might have import statements for other JS files or CSS. We have to deal with those import statements before executing the code [How to Solve?](#webpack---bundler)
 
-## ***Babel*** - Transpiler
+## **_Babel_** - Transpiler
 
 - Problem #2 would be solved if we could get Babel working in our React app
 - Take a look at existing apps online and see how they use babel:
@@ -52,7 +52,6 @@ console.log(message);
 
 ```javascript
 import React from 'react';
-
 ```
 
 => Transpiled by `Babel`
@@ -62,7 +61,7 @@ const React = require('react');
 module.exports = App;
 ```
 
-## ***Webpack*** - Bundler
+## **_Webpack_** - Bundler
 
 Single file containing both modules linked together in some way
 
@@ -86,7 +85,7 @@ it can deal with both `common js` and `ES Modules`
 ## esbuild-wasm NPM module
 
 - ESBuild can transpile + bundle code all in the browser.
-Small amount of JS(user input) => WASM (Go Lang bundler compiled to work in the browser)
+  Small amount of JS(user input) => WASM (Go Lang bundler compiled to work in the browser)
 - It is primarily intended to only be used in the browser. ([documentation](https://esbuild.github.io/getting-started/#install-the-wasm-version))
 
 ### ESBuild Bundling Process
@@ -96,6 +95,8 @@ Small amount of JS(user input) => WASM (Go Lang bundler compiled to work in the 
 3. Parse the `index.js` file, find any import/require/exports
 4. If there's any import/require/exports, figure out where the requested file is (onResolve) => UNPKG
 5. Attemp to load up the file
+
+### Use localforage (indexedDB)
 
 ## UNPKG
 
