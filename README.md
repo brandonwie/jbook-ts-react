@@ -158,3 +158,11 @@ document.querySelector('iframe').contentWindow; // from parent to child
 - `monaco-editor`: Typescript types
 - `prettier`: integration for formatting
 - `bulmaswatch`: add CSS
+
+### JSX Syntax Highlighting
+
+- [monaco-jsx-highlighter](https://www.npmjs.com/package/monaco-jsx-highlighter)
+
+### Resize Panes
+
+- [react-resizable](https://www.npmjs.com/package/react-resizable)

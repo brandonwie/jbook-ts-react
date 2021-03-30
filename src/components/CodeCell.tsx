@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CodeEditor from './CodeEditor';
 import Preview from './Preview';
 //esbuild bundler
@@ -6,18 +6,28 @@ import bundler from '../bundler';
 import Resizable from './Resizable';
 
 /**
+ * Create independent code +
  * @returns
  */
 const CodeCell = () => {
 	const [code, setCode] = useState('');
+	const [err, setErr] = useState('');
 	const [input, setInput] = useState('');
 
-	const onClick = async () => {
-		// feed input to bundler
-		const output = await bundler(input);
-		// update value with output
-		setCode(output);
-	};
+	useEffect(() => {
+		const timer = setTimeout(async () => {
+			// feed input to bundler
+			const output = await bundler(input);
+			// update value with output
+			setCode(output.code);
+			setErr(output.err);
+		}, 1000);
+
+		// cleaner
+		return () => {
+			clearTimeout(timer); // cancel prev timer
+		};
+	}, [input]);
 
 	return (
 		<Resizable direction='vertical'>
@@ -28,7 +38,7 @@ const CodeCell = () => {
 						onChange={(value) => setInput(value)}
 					/>
 				</Resizable>
-				<Preview code={code} />
+				<Preview code={code} buildError={err} />
 			</div>
 		</Resizable>
 	);
