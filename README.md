@@ -24,6 +24,8 @@ A CLI to launch an interactive development environment for writing and documenti
 2. This code might have advanced JS syntax in it (like JSX) that your browser can't execute [How to solve?](#transpiler-babel)
 3. The code might have import statements for other JS files or CSS. We have to deal with those import statements before executing the code [How to Solve?](#webpack---bundler)
 
+---
+
 ## **_Babel_** - Transpiler
 
 - Problem #2 would be solved if we could get Babel working in our React app
@@ -61,6 +63,8 @@ const React = require('react');
 module.exports = App;
 ```
 
+---
+
 ## **_Webpack_** - Bundler
 
 Single file containing both modules linked together in some way
@@ -81,6 +85,8 @@ it can deal with both `common js` and `ES Modules`
 - Local: fast execution / no need for API server / less complexity
 
 ### **Webpack doesn't work in the browser**
+
+---
 
 ## esbuild-wasm NPM module
 
@@ -130,7 +136,25 @@ document.querySelector('iframe').contentWindow; // from parent to child
 ### **SrcDocs**
 
 - An attribute of iframe
+- troubleshooting: nested script tags cause an error
+  - use `window.postMessage()`
 
 ### Downside of using single port for all
 
 - Cannot use a couple of features as localStorage
+- However, it's ignored for the sake of performance and convenience
+
+---
+
+## Open-source Browser-based Editors
+
+1. CodeMirror: easy, doesn't have out-of-the-box features
+2. Ace Editor: moderately easy, widely used
+3. **_Monaco Editor_**: hardest to setup, gives almost-perfect editing experience
+
+## Monaco Editor
+
+- `@monaco-editor/react`: main editor
+- `monaco-editor`: Typescript types
+- `prettier`: integration for formatting
+- `bulmaswatch`: add CSS

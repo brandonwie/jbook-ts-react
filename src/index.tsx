@@ -1,13 +1,16 @@
+import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import { useState, useEffect, useRef } from 'react';
 import * as esbuild from 'esbuild-wasm';
 import ReactDOM from 'react-dom';
 import unpkgPathPlugin from './plugins/unpkg-path-plugin';
 import fetchPlugin from './plugins/fetch-plugin';
+import CodeEditor from './components/code-editor';
+import Preview from './components/preview';
 
 const App = () => {
-	const ref = useRef<esbuild.Service>();
-	const [input, setInput] = useState('');
+	const ref = useRef<any>();
 	const [code, setCode] = useState('');
+	const [input, setInput] = useState('');
 
 	const startService = async () => {
 		ref.current = await esbuild.startService({
@@ -25,6 +28,7 @@ const App = () => {
 			return;
 		}
 
+		// Bundling process
 		const result = await ref.current.build({
 			entryPoints: ['index.js'],
 			bundle: true,
@@ -40,22 +44,18 @@ const App = () => {
 		setCode(result.outputFiles[0].text);
 	};
 
-	const html = `
-		<script>
-			${code}
-		</script>
-`;
-
 	return (
 		<div>
-			<textarea value={input} onChange={(e) => setInput(e.target.value)} />
+			<CodeEditor
+				initialValue='const a = 1;'
+				onChange={(value) => setInput(value)}
+			/>
 			<div>
 				<button onClick={onClick} type='submit'>
 					Submit
 				</button>
 			</div>
-			<pre>{code}</pre>
-			<iframe title='result' sandbox='allow-scripts' srcDoc={html} />
+			<Preview code={code} />
 		</div>
 	);
 };
