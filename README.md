@@ -1,7 +1,8 @@
-# Dynamic Programming Env
+# Jupiter-Notebook-like Code Editor
 
 - Author: Seokhyun Wie (Brandon)
 - Email: brandonwie.cs@gmail.com
+- Course: [Udemy](https://www.udemy.com/course/react-and-typescript-build-a-portfolio-project/)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-v4.2.3-informational?style=flat-sqaure)](https://www.typescriptlang.)
 [![React](https://img.shields.io/badge/React-v17.0.2-informational?style=flat-sqaure)](https://reactjs.org/)
@@ -16,7 +17,8 @@ Navigate to <http://localhost:4005> to edit.
 
 ## What am I building?
 
-A CLI to launch an interactive development environment for writing and documenting code
+A CLI to launch an interactive development environment for writing and documenting code.
+Support JS, and MarkDown
 
 ## Challenges
 
@@ -166,3 +168,9 @@ document.querySelector('iframe').contentWindow; // from parent to child
 ### Resize Panes
 
 - [react-resizable](https://www.npmjs.com/package/react-resizable)
+
+---
+
+## Markdown Editor
+
+- [@uiw-react-md-editor v3.0.0-beta.4](https://www.npmjs.com/package/@uiw/react-md-editor)

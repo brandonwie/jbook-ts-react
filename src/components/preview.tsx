@@ -17,14 +17,14 @@ const html = `
 			<!-- DISPLAY ERROR HANDLER -->
 			const handleError = (err) => {
 				const root = document.querySelector('#root');
-				root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>' + err + '</div>';
+				root.innerHTML = '<div style="color: red;" ><h3 >Runtime Error</h3>' + '<p>' + err + '</p>' + '</div>';
 				console.error(err);
 			};
 
 			<!-- ASYNC ERROR HANDLER -->
 			window.addEventListener('error', (event) => {
 				event.preventDefault();
-				console.log('ASYNC ERROR: ' + event.error)
+				console.err(event.error)
 				handleError(event.error);
 			});
 
@@ -64,7 +64,7 @@ const Preview: React.FC<PreviewProps> = ({ code, buildError }) => {
 			{buildError && (
 				<div className='preview-error'>
 					<h4 className='preview-error-title'>Compilation Error</h4>
-					{buildError}
+					<p>{buildError}</p>
 				</div>
 			)}
 		</div>
