@@ -1,10 +1,10 @@
-import './code-editor.css';
+import './CodeEditor.css';
 import { useRef } from 'react';
 import MonacoEditor, { EditorDidMount } from '@monaco-editor/react';
 import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
 import MonacoJSXHighLighter from 'monaco-jsx-highlighter';
-import './MonacoJSXHighlighter.css'; // must import after highlighter
+import './syntax-jsx.css'; // must import after highlighter
 import { parse } from '@babel/parser';
 import traverse from '@babel/traverse';
 

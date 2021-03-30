@@ -1,47 +1,25 @@
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
-import { useState, useEffect, useRef } from 'react';
-import * as esbuild from 'esbuild-wasm';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
-import unpkgPathPlugin from './plugins/unpkg-path-plugin';
-import fetchPlugin from './plugins/fetch-plugin';
-import CodeEditor from './components/code-editor';
-import Preview from './components/preview';
+import CodeEditor from './components/CodeEditor';
+import Preview from './components/Preview';
+//esbuild bundler
+import bundler from './bundler';
 
+/**
+ * @
+ * @async bundler
+ * @returns
+ */
 const App = () => {
-	const ref = useRef<any>();
 	const [code, setCode] = useState('');
 	const [input, setInput] = useState('');
 
-	const startService = async () => {
-		ref.current = await esbuild.startService({
-			worker: true,
-			wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm',
-		});
-	};
-
-	useEffect(() => {
-		startService();
-	}, []); // run once
-
 	const onClick = async () => {
-		if (!ref.current) {
-			return;
-		}
-
-		// Bundling process
-		const result = await ref.current.build({
-			entryPoints: ['index.js'],
-			bundle: true,
-			write: false,
-			plugins: [unpkgPathPlugin(), fetchPlugin(input)],
-			// remove warning: Define "process.env.NODE_ENV"
-			define: {
-				'process.env.NODE_ENV': '"production"',
-				global: 'window',
-			},
-		});
-
-		setCode(result.outputFiles[0].text);
+		// feed input to bundler
+		const output = await bundler(input);
+		// update value with output
+		setCode(output);
 	};
 
 	return (
