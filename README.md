@@ -7,6 +7,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-v4.2.3-informational?style=flat-sqaure)](https://www.typescriptlang.)
 [![React](https://img.shields.io/badge/React-v17.0.2-informational?style=flat-sqaure)](https://reactjs.org/)
 [![esbuild--wasm](https://img.shields.io/badge/esbuild--wasm-v0.8.27-yellow)](https://github.com/evanw/esbuild)
+[![react-md-editor](https://img.shields.io/badge/@uiw--react--markdown--editor-v2.1.1-yellow)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
 [![build](https://img.shields.io/badge/build-onContruction-important)](https://github.com/brandonwie/jbook-ts-react)
 
 ## How to run
@@ -173,4 +174,6 @@ document.querySelector('iframe').contentWindow; // from parent to child
 
 ## Markdown Editor
 
-- [@uiw-react-md-editor v3.0.0-beta.4](https://www.npmjs.com/package/@uiw/react-md-editor)
+- [@uiw-react-md-editor v2.1.1](https://www.npmjs.com/package/@uiw/react-md-editor)
+
+- Resizer is included
