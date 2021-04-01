@@ -192,3 +192,7 @@ document.querySelector('iframe').contentWindow; // from parent to child
 
 - cleaner code for reducer
 - No need to pass initialState inside reducer, but pass it as second argument in `produce()` function (to resolve unexpected `undefined` type error on states)
+
+### [Font Awesome](https://www.npmjs.com/package/@fortawesome/fontawesome-free)
+
+- css of icons

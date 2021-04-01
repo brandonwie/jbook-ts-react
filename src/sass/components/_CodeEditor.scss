@@ -9,9 +9,9 @@
 		right: 5px;
 		z-index: 20;
 		opacity: 0;
-		transition: opacity 0.3s;
+		transition: opacity 0.2s;
 	}
-	:hover .button-format {
+	&:hover .button-format {
 		opacity: 1;
 	}
 }
