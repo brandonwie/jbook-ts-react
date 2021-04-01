@@ -1,10 +1,12 @@
 /**
- * @project JavaScript Notebook
- * @author Seokhyun Wie (Brandon)
+ * @project JavaScript Notebook (JBOOK)
+ * @writer Seokhyun Wie (Brandon)
  * @email brandonwie.cs@gmail.com
- * @date Mar 26, 2021
+ * @since Mar 26, 2021
+ * @copyright This project is based on the "React and Typescript: Build a Portfolio Project" course on Udemy(https://www.udemy.com/course/react-and-typescript-build-a-portfolio-project/)
  */
 
+import './sass/main.scss';
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import ReactDOM from 'react-dom';
 import CodeCell from './components/CodeCell';

@@ -1,0 +1,16 @@
+// **************************************
+// main.scss
+// Main Sass file used to import partials
+// **************************************
+
+// Normalize
+@import 'base/reset';
+
+// Components
+@import 'components/codeEditor';
+@import 'components/TextEditor';
+@import 'components/Preview';
+@import 'components/Resizable';
+
+// Layout
+@import 'layout/syntax-jsx';

@@ -177,3 +177,4 @@ document.querySelector('iframe').contentWindow; // from parent to child
 - [@uiw-react-md-editor v2.1.1](https://www.npmjs.com/package/@uiw/react-md-editor)
 
 - Resizer is included
+- Will have a conflict with bulmacss `.title` class
