@@ -191,4 +191,4 @@ document.querySelector('iframe').contentWindow; // from parent to child
 ### [Immer](https://immerjs.github.io/immer/)
 
 - cleaner code for reducer
-- No need to pass initialState inside reducer, but pass it as second argument in `produce()` function (to resolve unexpected `undefined` type error)
+- No need to pass initialState inside reducer, but pass it as second argument in `produce()` function (to resolve unexpected `undefined` type error on states)
