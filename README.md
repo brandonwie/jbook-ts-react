@@ -6,6 +6,7 @@
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-v4.2.3-informational?style=flat-sqaure)](https://www.typescriptlang.)
 [![React](https://img.shields.io/badge/React-v17.0.2-informational?style=flat-sqaure)](https://reactjs.org/)
+[![Redux](https://img.shields.io/badge/Redux-v7.2.2-informational?style=flat-sqaure)](https://redux.js.org/)
 [![esbuild--wasm](https://img.shields.io/badge/esbuild--wasm-v0.8.27-yellow)](https://github.com/evanw/esbuild)
 [![react-md-editor](https://img.shields.io/badge/@uiw--react--markdown--editor-v2.1.1-yellow)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
 [![build](https://img.shields.io/badge/build-onContruction-important)](https://github.com/brandonwie/jbook-ts-react)
@@ -160,7 +161,7 @@ document.querySelector('iframe').contentWindow; // from parent to child
 - `@monaco-editor/react`: main editor
 - `monaco-editor`: Typescript types
 - `prettier`: integration for formatting
-- `bulmaswatch`: add CSS
+- `bulmaswatch`: CDN CSS Library
 
 ### JSX Syntax Highlighting
 
@@ -177,4 +178,17 @@ document.querySelector('iframe').contentWindow; // from parent to child
 - [@uiw-react-md-editor v2.1.1](https://www.npmjs.com/package/@uiw/react-md-editor)
 
 - Resizer is included
-- Will have a conflict with bulmacss `.title` class
+- Will have a conflict with bulmacss `.title` class: check out `./src/scss/components/_TextEditor.scss`
+
+---
+
+## Redux
+
+### Structure
+
+![alt text](./etc/redux-structure.jpg)
+
+### [Immer](https://immerjs.github.io/immer/)
+
+- cleaner code for reducer
+- No need to pass initialState inside reducer, but pass it as second argument in `produce()` function (to resolve unexpected `undefined` type error)

@@ -9,14 +9,18 @@
 import './sass/main.scss';
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux';
 import CodeCell from './components/CodeCell';
 import TextEditor from './components/TextEditor';
 
 const App = () => {
 	return (
-		<div>
-			<TextEditor />
-		</div>
+		<Provider store={store}>
+			<div>
+				<TextEditor />
+			</div>
+		</Provider>
 	);
 };
 

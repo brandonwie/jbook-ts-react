@@ -38,8 +38,10 @@ const TextEditor: React.FC = () => {
 
 	// preview component
 	return (
-		<div className='text-editor' onClick={() => setIsEditing(true)}>
-			<MDEditor.Markdown source={value} />
+		<div className='text-editor card' onClick={() => setIsEditing(true)}>
+			<div className='card-content'>
+				<MDEditor.Markdown source={value} />
+			</div>
 		</div>
 	);
 };
