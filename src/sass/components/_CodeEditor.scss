@@ -9,7 +9,7 @@
 		right: 5px;
 		z-index: 20;
 		opacity: 0;
-		transition: opacity 0.2s;
+		transition: opacity 0.2s ease-in 0.1s;
 	}
 	&:hover .button-format {
 		opacity: 1;

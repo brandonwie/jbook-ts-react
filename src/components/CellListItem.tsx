@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { Cell } from '../redux';
 import CodeCell from './CodeCell';
 import TextEditor from './TextEditor';
@@ -11,21 +11,21 @@ const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {
 	let child: JSX.Element;
 	if (cell.type === 'code') {
 		child = (
-			<React.Fragment>
+			<Fragment>
 				<div className='action-bar-wrapper'>
 					<ActionBar id={cell.id} />
 				</div>
 				<CodeCell cell={cell} />
-			</React.Fragment>
+			</Fragment>
 		);
 	} else {
 		child = (
-			<React.Fragment>
+			<Fragment>
 				<div className='action-bar-wrapper'>
 					<ActionBar id={cell.id} />
 				</div>
 				<TextEditor cell={cell} />
-			</React.Fragment>
+			</Fragment>
 		);
 	}
 	return <div className='cell-list-item'>{child}</div>;
