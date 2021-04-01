@@ -50,8 +50,6 @@ const Preview: React.FC<PreviewProps> = ({ code, buildError }) => {
 		}, 50);
 	}, [code]);
 
-	console.log('buildError: ' + buildError);
-
 	return (
 		<div className='preview-wrapper'>
 			<iframe

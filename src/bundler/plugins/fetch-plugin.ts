@@ -13,7 +13,6 @@ const fetchPlugin = (inputCode: string) => {
 			//! Load
 			//* Load up the index.js file
 			build.onLoad({ filter: /(^index\.js$)/ }, () => {
-				console.log('onLoad index.js');
 				return {
 					loader: 'jsx',
 					contents: inputCode,
@@ -22,7 +21,6 @@ const fetchPlugin = (inputCode: string) => {
 
 			//* Check Cache
 			build.onLoad({ filter: /.*/ }, async (args: any) => {
-				console.log('Checking caches...');
 				// Check to see if we have already fetched this file
 				// and if it is in the cache
 				const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(
@@ -37,7 +35,6 @@ const fetchPlugin = (inputCode: string) => {
 
 			//* Load if CSS is in path
 			build.onLoad({ filter: /.css$/ }, async (args: any) => {
-				console.log('onLoading CSS...');
 				const { data, request } = await axios.get(args.path);
 
 				const escaped = data
@@ -65,7 +62,6 @@ const fetchPlugin = (inputCode: string) => {
 
 			//* Load other new packages
 			build.onLoad({ filter: /.*/ }, async (args: any) => {
-				console.log('onLoad other packages');
 				const { data, request } = await axios.get(args.path);
 
 				const result: esbuild.OnLoadResult = {
