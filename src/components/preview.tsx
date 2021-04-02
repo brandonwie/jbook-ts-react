@@ -17,13 +17,11 @@ const html = `
 			const handleError = (err) => {
 				const root = document.querySelector('#root');
 				root.innerHTML = '<div style="color: red;" ><h3 >Runtime Error</h3>' + '<p>' + err + '</p>' + '</div>';
-				console.error(err);
 			};
 
 			<!-- ASYNC ERROR HANDLER -->
 			window.addEventListener('error', (event) => {
 				event.preventDefault();
-				console.err(event.error)
 				handleError(event.error);
 			});
 
@@ -31,7 +29,6 @@ const html = `
         try {
           eval(event.data);
         } catch(err) {
-					console.log('try-catch error:')
 					handleError(err);
         }
       }, false)

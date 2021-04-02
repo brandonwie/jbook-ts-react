@@ -196,3 +196,7 @@ document.querySelector('iframe').contentWindow; // from parent to child
 ### [Font Awesome](https://www.npmjs.com/package/@fortawesome/fontawesome-free)
 
 - css of icons
+
+### useMemo
+
+- to assist bindActionCreators from being executed infinitely (src/hooks/use-actions.ts)
