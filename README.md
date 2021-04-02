@@ -200,3 +200,9 @@ document.querySelector('iframe').contentWindow; // from parent to child
 ### useMemo
 
 - to assist bindActionCreators from being executed infinitely (src/hooks/use-actions.ts)
+
+---
+
+## Cumulative Code Execution
+
+- connect two or more different cells so the later cell can use variables in the previous cell

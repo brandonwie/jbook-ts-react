@@ -15,6 +15,12 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, type, content } }) => {
 	const bundle = useAppSelector((state) => state.bundles[id]);
 
 	useEffect(() => {
+		// first bundle execute immediately
+		if (!bundle) {
+			createBundle(id, content);
+			return;
+		}
+
 		const timer = setTimeout(async () => {
 			createBundle(id, content);
 		}, 750);
@@ -23,6 +29,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, type, content } }) => {
 		return () => {
 			clearTimeout(timer); // cancel prev timer
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id, content, createBundle]);
 
 	return (
@@ -40,7 +47,17 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, type, content } }) => {
 						onChange={(value) => updateCell(id, value)}
 					/>
 				</Resizable>
-				{bundle && <Preview code={bundle.code} buildError={bundle.err} />}
+				<div className='progress-wrapper'>
+					{!bundle || bundle.loading ? (
+						<div className='progress-cover'>
+							<progress className='progress is-small is-info' max='100'>
+								Loading
+							</progress>
+						</div>
+					) : (
+						<Preview code={bundle.code} buildError={bundle.err} />
+					)}
+				</div>
 			</div>
 		</Resizable>
 	);
