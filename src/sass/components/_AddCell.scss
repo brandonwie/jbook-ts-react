@@ -7,6 +7,11 @@
 	&:hover {
 		opacity: 1;
 	}
+
+	&:active {
+		opacity: 0 !important;
+		transition: opacity 0s;
+	}
 	.divider {
 		position: absolute;
 		top: 50%;
