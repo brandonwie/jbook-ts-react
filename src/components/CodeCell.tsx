@@ -12,7 +12,26 @@ interface CodeCellProps {
 }
 const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, type, content } }) => {
 	const { updateCell, createBundle } = useActions();
+	// single bundle
 	const bundle = useAppSelector((state) => state.bundles[id]);
+	// connect bundles
+	const connectBundles = useAppSelector((state) => {
+		const { data, order } = state.cells;
+		const orderedCells = order.map((id) => data[id]);
+
+		const cumulativeCode = [];
+		for (let c of orderedCells) {
+			if (c.type === 'code') {
+				cumulativeCode.push(c.content);
+			}
+			if (c.id === id) {
+				break;
+			}
+		}
+		return cumulativeCode;
+	});
+
+	console.log(connectBundles);
 
 	useEffect(() => {
 		// first bundle execute immediately

@@ -205,4 +205,5 @@ document.querySelector('iframe').contentWindow; // from parent to child
 
 ## Cumulative Code Execution
 
-- connect two or more different cells so the later cell can use variables in the previous cell
+connect two or more different cells so the later cell can use variables in the previous cell
+![alt text](./etc/code-join.jpg)
