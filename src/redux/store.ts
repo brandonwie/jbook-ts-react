@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-import { ActionTypes } from './action-types';
+import { CellActionType } from './action-types';
 
 export const store = createStore(
 	reducers,
@@ -12,7 +12,7 @@ export const store = createStore(
 );
 
 store.dispatch({
-	type: ActionTypes.INSERT_CELL_AFTER,
+	type: CellActionType.INSERT_CELL_AFTER,
 	payload: {
 		id: null,
 		type: 'code',
@@ -20,7 +20,7 @@ store.dispatch({
 });
 
 store.dispatch({
-	type: ActionTypes.INSERT_CELL_AFTER,
+	type: CellActionType.INSERT_CELL_AFTER,
 	payload: {
 		id: null,
 		type: 'text',
@@ -28,7 +28,7 @@ store.dispatch({
 });
 
 store.dispatch({
-	type: ActionTypes.INSERT_CELL_AFTER,
+	type: CellActionType.INSERT_CELL_AFTER,
 	payload: {
 		id: null,
 		type: 'code',
@@ -36,7 +36,7 @@ store.dispatch({
 });
 
 store.dispatch({
-	type: ActionTypes.INSERT_CELL_AFTER,
+	type: CellActionType.INSERT_CELL_AFTER,
 	payload: {
 		id: null,
 		type: 'text',

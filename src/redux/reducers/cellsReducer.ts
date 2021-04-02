@@ -1,6 +1,6 @@
 import produce from 'immer';
-import { ActionTypes } from '../action-types';
-import { Actions } from '../actions';
+import { CellActionType } from '../action-types';
+import { CellAction } from '../actions';
 import { Cell } from '../cell';
 
 interface CellsState {
@@ -19,19 +19,19 @@ const initialState: CellsState = {
 	data: {},
 };
 
-const reducer = produce((state: CellsState, action: Actions) => {
+const reducer = produce((state: CellsState, action: CellAction) => {
 	switch (action.type) {
-		case ActionTypes.UPDATE_CELL:
+		case CellActionType.UPDATE_CELL:
 			const { id, content } = action.payload;
 			state.data[id].content = content;
 			return;
 
-		case ActionTypes.DELETE_CELL:
+		case CellActionType.DELETE_CELL:
 			delete state.data[action.payload];
 			state.order = state.order.filter((id) => id !== action.payload);
 			return;
 
-		case ActionTypes.MOVE_CELL:
+		case CellActionType.MOVE_CELL:
 			const { direction } = action.payload;
 			const index = state.order.findIndex((id) => id === action.payload.id);
 			const targetIndex = direction === 'up' ? index - 1 : index + 1;
@@ -46,7 +46,7 @@ const reducer = produce((state: CellsState, action: Actions) => {
 
 			return;
 
-		case ActionTypes.INSERT_CELL_AFTER:
+		case CellActionType.INSERT_CELL_AFTER:
 			const cell: Cell = {
 				id: randomId(),
 				type: action.payload.type,
