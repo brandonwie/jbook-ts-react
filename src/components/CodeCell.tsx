@@ -6,6 +6,7 @@ import Resizable from './Resizable';
 import { Cell } from '../redux';
 import { useActions } from '../hooks/use-actions';
 import { useAppSelector } from '../hooks/use-typed-selector';
+import { useCulmuativeCode } from '../hooks/use-cumulative-code';
 
 interface CodeCellProps {
 	cell: Cell;
@@ -14,45 +15,17 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, content } }) => {
 	const { updateCell, createBundle } = useActions();
 	// single bundle
 	const bundle = useAppSelector((state) => state.bundles[id]);
-	// connect bundles
-	const cumulatedCode = useAppSelector((state) => {
-		const { data, order } = state.cells;
-		// create a new array with data following order
-		const orderedCells = order.map((id) => data[id]);
-
-		// accumulate results
-		const codeStack = [
-			`
-			const show = (value) => {
-				if (typeof value == 'object') {
-					document.querySelector('#root').innerHTML = JSON.stringify(value);
-				} else {
-					document.querySelector('#root').innerHTML = value;
-				}
-			};
-		`,
-		];
-
-		for (let c of orderedCells) {
-			if (c.type === 'code') {
-				codeStack.push(c.content);
-			}
-			if (c.id === id) {
-				break;
-			}
-		}
-		return codeStack;
-	});
+	const cumulativeCode = useCulmuativeCode(id);
 
 	useEffect(() => {
 		// first bundle execute immediately
 		if (!bundle) {
-			createBundle(id, cumulatedCode.join('\n'));
+			createBundle(id, cumulativeCode);
 			return;
 		}
 
 		const timer = setTimeout(async () => {
-			createBundle(id, cumulatedCode.join('\n'));
+			createBundle(id, cumulativeCode);
 		}, 750);
 
 		// cleaner
@@ -60,7 +33,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, content } }) => {
 			clearTimeout(timer); // cancel prev timer
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [cumulatedCode.join('\n'), id, content, createBundle]);
+	}, [cumulativeCode, id, content, createBundle]);
 
 	return (
 		<Resizable direction='vertical'>
