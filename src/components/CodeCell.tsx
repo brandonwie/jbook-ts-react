@@ -21,7 +21,17 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, content } }) => {
 		const orderedCells = order.map((id) => data[id]);
 
 		// accumulate results
-		const codeStack = [];
+		const codeStack = [
+			`
+			const show = (value) => {
+				if (typeof value == 'object') {
+					document.querySelector('#root').innerHTML = JSON.stringify(value);
+				} else {
+					document.querySelector('#root').innerHTML = value;
+				}
+			};
+		`,
+		];
 
 		for (let c of orderedCells) {
 			if (c.type === 'code') {
@@ -33,8 +43,6 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, content } }) => {
 		}
 		return codeStack;
 	});
-
-	console.log(cumulatedCode);
 
 	useEffect(() => {
 		// first bundle execute immediately
