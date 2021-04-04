@@ -10,38 +10,41 @@ import { useAppSelector } from '../hooks/use-typed-selector';
 interface CodeCellProps {
 	cell: Cell;
 }
-const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, type, content } }) => {
+const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, content } }) => {
 	const { updateCell, createBundle } = useActions();
 	// single bundle
 	const bundle = useAppSelector((state) => state.bundles[id]);
 	// connect bundles
-	const connectBundles = useAppSelector((state) => {
+	const cumulatedCode = useAppSelector((state) => {
 		const { data, order } = state.cells;
+		// create a new array with data following order
 		const orderedCells = order.map((id) => data[id]);
 
-		const cumulativeCode = [];
+		// accumulate results
+		const codeStack = [];
+
 		for (let c of orderedCells) {
 			if (c.type === 'code') {
-				cumulativeCode.push(c.content);
+				codeStack.push(c.content);
 			}
 			if (c.id === id) {
 				break;
 			}
 		}
-		return cumulativeCode;
+		return codeStack;
 	});
 
-	console.log(connectBundles);
+	console.log(cumulatedCode);
 
 	useEffect(() => {
 		// first bundle execute immediately
 		if (!bundle) {
-			createBundle(id, content);
+			createBundle(id, cumulatedCode.join('\n'));
 			return;
 		}
 
 		const timer = setTimeout(async () => {
-			createBundle(id, content);
+			createBundle(id, cumulatedCode.join('\n'));
 		}, 750);
 
 		// cleaner
@@ -49,7 +52,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { id, type, content } }) => {
 			clearTimeout(timer); // cancel prev timer
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [id, content, createBundle]);
+	}, [cumulatedCode.join('\n'), id, content, createBundle]);
 
 	return (
 		<Resizable direction='vertical'>
