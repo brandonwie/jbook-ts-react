@@ -188,7 +188,7 @@ document.querySelector('iframe').contentWindow; // from parent to child
 
 ### Structure
 
-![alt text](./etc/redux-structure.jpg)
+![redux structure](./etc/redux-structure.jpg)
 
 ### [Immer](https://immerjs.github.io/immer/)
 
@@ -208,13 +208,13 @@ document.querySelector('iframe').contentWindow; // from parent to child
 ## Cumulative Code Execution
 
 connect two or more different cells so the later cell can use variables in the previous cell
-![alt text](./etc/code-join.jpg)
+![show() function](./etc/code-join.jpg)
 
 ---
 
 ## Local Node API
 
-![alt text](./etc/local-arch.jpg)
+![local node API](./etc/local-arch.jpg)
 
 separate NPM packages
 
@@ -229,3 +229,12 @@ Tool for managing a multi-package project
 
 - Lerna | Yarn Workspaces | NPM Workspaces | Bolt | Luigi
 - Lerna - v3.22.1 is used
+- bootstrap mapping
+  ![bootstrap map](./etc/lerna-bootstrap.jpg)
+
+### Add TypeScript support
+
+- In `/packages` folder, go to every sub packages' folder and run `npx typescript --init` and `lerna add typescript --dev --scope=packageNames`
+- open `tsconfig.json` set outDir to `./dist`
+- In `/local-api` package, inside `tsconfig.json` you need to set `declaration` to `true`
+- In the root directory, go to `package.json` and add script `"start": "lerna run start --parallel"`, it will run all packages concurrently
