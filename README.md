@@ -17,6 +17,8 @@
 
 Navigate to <http://localhost:4005> to edit.
 
+# Development Notes
+
 ## What am I building?
 
 A CLI to launch an interactive development environment for writing and documenting code.
@@ -207,3 +209,23 @@ document.querySelector('iframe').contentWindow; // from parent to child
 
 connect two or more different cells so the later cell can use variables in the previous cell
 ![alt text](./etc/code-join.jpg)
+
+---
+
+## Local Node API
+
+![alt text](./etc/local-arch.jpg)
+
+separate NPM packages
+
+- CLI: jbook
+- Local Express API: @jbook/local-api
+- Public Express API: @jbook/public-api
+- React App: @jbook/local-client
+
+## Lerna CLI
+
+Tool for managing a multi-package project
+
+- Lerna | Yarn Workspaces | NPM Workspaces | Bolt | Luigi
+- Lerna - v3.22.1 is used
