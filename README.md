@@ -238,3 +238,11 @@ Tool for managing a multi-package project
 - open `tsconfig.json` set outDir to `./dist`
 - In `/local-api` package, inside `tsconfig.json` you need to set `declaration` to `true`
 - In the root directory, go to `package.json` and add script `"start": "lerna run start --parallel"`, it will run all packages concurrently
+
+### Connect packages
+
+- the application is in `/packages/local-client`
+
+- `/packages/cli`: has `local-api` as a dependency
+- `/packages/local-api`: has `local-client` as a dependency
+- `/packages/local-client`: has the application
