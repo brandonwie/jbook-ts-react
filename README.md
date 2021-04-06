@@ -246,3 +246,9 @@ Tool for managing a multi-package project
 - `/packages/cli`: has `local-api` as a dependency
 - `/packages/local-api`: has `local-client` as a dependency
 - `/packages/local-client`: has the application
+
+### Execution Environment
+
+How to check?
+
+- Don't use `process.env.NODE_ENV`: can be easily overwritten
