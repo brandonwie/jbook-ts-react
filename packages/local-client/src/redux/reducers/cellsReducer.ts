@@ -2,8 +2,9 @@ import produce from 'immer';
 import { CellActionType, FetchActionType } from '../action-types';
 import { CellAction, FetchAction } from '../actions';
 import { Cell } from '../cell';
+import { initialState } from './initialState';
 
-interface CellsState {
+export interface CellsState {
 	loading: boolean;
 	error: string | null;
 	order: string[];
@@ -11,13 +12,6 @@ interface CellsState {
 		[key: string]: Cell;
 	};
 }
-
-const initialState: CellsState = {
-	loading: false,
-	error: null,
-	order: [],
-	data: {},
-};
 
 const reducer = produce(
 	(state: CellsState, action: CellAction | FetchAction) => {

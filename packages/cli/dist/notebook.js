@@ -1,1 +1,1 @@
-[{"id":"t2dgt","type":"code","content":"console.log(123);"}]
+[{"id":"ghz1h","type":"text","content":""}]
