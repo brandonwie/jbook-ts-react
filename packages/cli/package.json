@@ -1,6 +1,6 @@
 {
 	"name": "jsnote-bw",
-	"version": "1.1.5",
+	"version": "1.1.6",
 	"description": "",
 	"bin": "dist/index.js",
 	"publishConfig": {
@@ -25,7 +25,7 @@
 		"@jsnote-bw/local-client": "^1.1.4"
 	},
 	"devDependencies": {
-		"@jsnote-bw/local-api": "^1.1.5",
+		"@jsnote-bw/local-api": "^1.1.6",
 		"@types/node": "^14.14.37",
 		"commander": "^7.0.0",
 		"esbuild": "0.8.26",
