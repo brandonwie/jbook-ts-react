@@ -68,9 +68,7 @@ var createCellsRouter = function (filename, dirName) {
                     _a.sent();
                     res.send([]);
                     return [3 /*break*/, 5];
-                case 4:
-                    res.send({ error: err_1.message }).status(err_1.code);
-                    _a.label = 5;
+                case 4: throw err_1;
                 case 5: return [3 /*break*/, 6];
                 case 6: return [2 /*return*/];
             }
@@ -92,8 +90,7 @@ var createCellsRouter = function (filename, dirName) {
                     return [3 /*break*/, 4];
                 case 3:
                     err_2 = _a.sent();
-                    res.send({ error: err_2.message }).status(err_2.code);
-                    return [3 /*break*/, 4];
+                    throw err_2;
                 case 4: return [2 /*return*/];
             }
         });

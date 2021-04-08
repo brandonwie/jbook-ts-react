@@ -24,9 +24,10 @@ export const createCellsRouter = (filename: string, dirName: string) => {
 			if (err.code === 'ENOENT') {
 				// Add code to create a file and add default cells
 				await fs.writeFile(fullPath, '[]', 'utf8');
+
 				res.send([]);
 			} else {
-				res.send({ error: err.message }).status(err.code);
+				throw err;
 			}
 		}
 	});
@@ -35,13 +36,12 @@ export const createCellsRouter = (filename: string, dirName: string) => {
 		// Take the list of cells from the request object
 		// Serialize them
 		const { cells }: { cells: Cell[] } = req.body;
-
 		// Write the cells into the file
 		try {
 			await fs.writeFile(fullPath, JSON.stringify(cells), 'utf8');
 			res.send({ status: 'success' }).status(200);
 		} catch (err) {
-			res.send({ error: err.message }).status(err.code);
+			throw err;
 		}
 	});
 
