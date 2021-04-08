@@ -43,6 +43,7 @@ exports.createCellsRouter = void 0;
 var express_1 = __importDefault(require("express"));
 var promises_1 = __importDefault(require("fs/promises"));
 var path_1 = __importDefault(require("path"));
+var initContent_1 = require("./initContent");
 var createCellsRouter = function (filename, dirName) {
     var router = express_1.default.Router();
     router.use(express_1.default.json());
@@ -62,7 +63,7 @@ var createCellsRouter = function (filename, dirName) {
                     err_1 = _a.sent();
                     if (!(err_1.code === 'ENOENT')) return [3 /*break*/, 4];
                     // Add code to create a file and add default cells
-                    return [4 /*yield*/, promises_1.default.writeFile(fullPath, '[]', 'utf8')];
+                    return [4 /*yield*/, promises_1.default.writeFile(fullPath, JSON.stringify(initContent_1.initContent), 'utf8')];
                 case 3:
                     // Add code to create a file and add default cells
                     _a.sent();
