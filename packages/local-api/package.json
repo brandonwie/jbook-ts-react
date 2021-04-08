@@ -21,7 +21,7 @@
 		"javascript",
 		"js editor"
 	],
-	"author": "",
+	"author": "brandonwie",
 	"license": "ISC",
 	"devDependencies": {
 		"@types/cors": "^2.8.10",

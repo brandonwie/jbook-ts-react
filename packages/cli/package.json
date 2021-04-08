@@ -19,7 +19,7 @@
 		"javascript",
 		"js editor"
 	],
-	"author": "",
+	"author": "brandonwie",
 	"license": "ISC",
 	"dependencies": {
 		"@jsnote-bw/local-client": "^1.1.4"
