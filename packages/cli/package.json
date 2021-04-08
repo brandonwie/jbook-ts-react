@@ -1,6 +1,6 @@
 {
 	"name": "jsnote-bw",
-	"version": "1.1.11",
+	"version": "1.1.12",
 	"description": "",
 	"bin": "dist/index.js",
 	"publishConfig": {
@@ -22,10 +22,10 @@
 	"author": "brandonwie",
 	"license": "ISC",
 	"dependencies": {
-		"@jsnote-bw/local-client": "^1.1.7"
+		"@jsnote-bw/local-client": "^1.1.12"
 	},
 	"devDependencies": {
-		"@jsnote-bw/local-api": "^1.1.10",
+		"@jsnote-bw/local-api": "^1.1.12",
 		"@types/node": "^14.14.37",
 		"commander": "^7.0.0",
 		"esbuild": "0.8.26",
