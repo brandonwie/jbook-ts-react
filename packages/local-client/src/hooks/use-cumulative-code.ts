@@ -10,15 +10,20 @@ export const useCulmuativeCode = (cellId: string) => {
 		const showFunc = `
 		import _React from 'react';
 		import _ReactDOM from 'react-dom';
+
 		var show = (value) => {
 			const root = document.querySelector('#root');
 
-			if (typeof value == 'object') {
+			if (typeof value === 'object') {
+				console.log(value);
 				if (value.$$typeof && value.props) {
 					_ReactDOM.render(value, root);
 				} else {
 					root.innerHTML = JSON.stringify(value);
 				}
+			} else if (typeof value === 'function') {
+				const Comp = value;
+				_ReactDOM.render(<Comp />, root);
 			} else {
 				root.innerHTML = value;
 			}

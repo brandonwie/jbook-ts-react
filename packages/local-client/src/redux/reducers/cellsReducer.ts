@@ -2,7 +2,7 @@ import produce from 'immer';
 import { CellActionType, FetchActionType } from '../action-types';
 import { CellAction, FetchAction } from '../actions';
 import { Cell } from '../cell';
-import { initialState } from './initialState';
+import { preloadedState } from '../preloadedState';
 
 export interface CellsState {
 	loading: boolean;
@@ -12,6 +12,13 @@ export interface CellsState {
 		[key: string]: Cell;
 	};
 }
+
+export const initialState: CellsState = {
+	loading: false,
+	error: null,
+	order: [],
+	data: {},
+};
 
 const reducer = produce(
 	(state: CellsState, action: CellAction | FetchAction) => {
@@ -95,7 +102,7 @@ const reducer = produce(
 				return;
 		}
 	},
-	initialState
+	preloadedState
 );
 
 const randomId = () => {

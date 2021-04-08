@@ -2,13 +2,20 @@ import { useRef } from 'react';
 import MonacoEditor, { EditorDidMount } from '@monaco-editor/react';
 import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
-import Highlighter from 'monaco-jsx-highlighter';
-import codeShift from 'jscodeshift';
-
+import MonacoJSXHighlighter from 'monaco-jsx-highlighter';
+import { parse } from '@babel/parser';
+import traverse from '@babel/traverse';
+import { clearTimeout } from 'node:timers';
 interface CodeEditorProps {
 	initialValue: string;
 	onChange(value: string): void;
 }
+
+const babelParse = (code: string) =>
+	parse(code, {
+		sourceType: 'module',
+		plugins: ['jsx'],
+	});
 
 const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
 	// connect format button with editor
@@ -24,19 +31,15 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
 		monacoEditor.getModel()?.updateOptions({ tabSize: 2 });
 
 		// Highlighter Setting
-		const highlighter = new Highlighter(
+		const highlighter = new MonacoJSXHighlighter(
 			// @ts-ignore
 			window.monaco,
-			codeShift,
+			babelParse,
+			traverse,
 			monacoEditor
 		);
 
-		highlighter.highLightOnDidChangeModelContent(
-			() => {},
-			() => {},
-			undefined,
-			() => {}
-		);
+		highlighter.highLightOnDidChangeModelContent(100);
 	};
 
 	// formatting with prettier
