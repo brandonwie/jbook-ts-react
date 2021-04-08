@@ -21,15 +21,15 @@ JSNote is a simple JavaScript code editor with Markdown note functionality.
 
 > `$ npm run start`
 
-Lerna will run all the packages with `parallel` flag
+Lerna will run all the packages with `parallel` flag.</br>
 Navigate to <http://localhost:3000> to start.
 
 2. Using NPX
 
 > `$ npx jsnote-bw serve`
 
-Navigate to <http://localhost:4005> to start.
-Your codes will be saved in `notebook.js` file.
+Navigate to <http://localhost:4005> to start.</br>
+Your codes will be saved in `notebook.js` file.</br>
 The file is in the folder where you execute the command.
 
 # Development Notes
