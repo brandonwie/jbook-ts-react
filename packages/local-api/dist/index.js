@@ -30,6 +30,6 @@ var serve = function (port, filename, dirName, useProxy) {
     }
     return new Promise(function (resolve, reject) {
         app.listen(port, resolve).on('error', reject);
-    });
+    }).catch(function (err) { return console.log(err.message); });
 };
 exports.serve = serve;
