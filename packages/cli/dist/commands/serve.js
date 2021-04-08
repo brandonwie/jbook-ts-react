@@ -69,7 +69,7 @@ exports.serveCommand = new commander_1.Command()
                 case 2:
                     err_1 = _a.sent();
                     if (err_1.code === 'EADDRINUSE') {
-                        console.error('Port is in use. Try running on a different port.');
+                        console.error("Port " + options.port + " is in use. Try running on a different port.");
                     }
                     else {
                         console.error('Something went wrong:', err_1.message);

@@ -31,7 +31,9 @@ export const serveCommand = new Command()
 			);
 		} catch (err) {
 			if (err.code === 'EADDRINUSE') {
-				console.error('Port is in use. Try running on a different port.');
+				console.error(
+					`Port ${options.port} is in use. Try running on a different port.`
+				);
 			} else {
 				console.error('Something went wrong:', err.message);
 			}

@@ -8,8 +8,10 @@ var express_1 = __importDefault(require("express"));
 var http_proxy_middleware_1 = require("http-proxy-middleware");
 var path_1 = __importDefault(require("path"));
 var cells_1 = require("./routes/cells");
+var cors_1 = __importDefault(require("cors"));
 var serve = function (port, filename, dirName, useProxy) {
     var app = express_1.default();
+    app.use(cors_1.default());
     app.use(cells_1.createCellsRouter(filename, dirName));
     // if proxy is in use, activate local development mode
     if (useProxy) {
