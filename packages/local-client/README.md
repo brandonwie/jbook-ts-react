@@ -9,15 +9,26 @@
 [![Redux](https://img.shields.io/badge/Redux-v7.2.2-informational?style=flat-sqaure)](https://redux.js.org/)
 [![esbuild--wasm](https://img.shields.io/badge/esbuild--wasm-v0.8.27-yellow)](https://github.com/evanw/esbuild)
 [![react-md-editor](https://img.shields.io/badge/@uiw--react--markdown--editor-v2.1.1-yellow)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
-[![version](https://img.shields.io/badge/version-1.1.3-success)](https://github.com/brandonwie/jbook-ts-react)
+[![version](https://img.shields.io/badge/version-1.2.0-success)](https://github.com/brandonwie/jbook-ts-react)
+
+## JSNote is managed by [Lerna](https://github.com/lerna/lerna)
+
+## How to install
+
+`$ npm install jsnote-bw`
 
 ## How to run
 
-`$ npm install`: download NPM packages
+`$ npx jsnote-bw serve`
 
-`$ npm run start`: starting on `localhost:3000`
+Navigate to <http://localhost:4005> to start.</br>
+Your codes will be saved in `notebook.js` file.</br>
+The file is in the folder where you execute the command.
 
-Navigate to <http://localhost:3000> to start editing.
+## Screenshot
+
+if you don't see this initial content below, please refresh the browser
+![app screenshot](./etc/app.jpg)
 
 ---
 

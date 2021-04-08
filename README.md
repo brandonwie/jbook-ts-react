@@ -11,26 +11,35 @@ JSNote is a simple JavaScript code editor with Markdown note functionality.
 [![Redux](https://img.shields.io/badge/Redux-v7.2.2-informational?style=flat-sqaure)](https://redux.js.org/)
 [![esbuild--wasm](https://img.shields.io/badge/esbuild--wasm-v0.8.27-yellow)](https://github.com/evanw/esbuild)
 [![react-md-editor](https://img.shields.io/badge/@uiw--react--markdown--editor-v2.1.1-yellow)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
-[![version](https://img.shields.io/badge/version-1.1.3-success)](https://github.com/brandonwie/jbook-ts-react)
+[![version](https://img.shields.io/badge/version-1.2.0-success)](https://github.com/brandonwie/jbook-ts-react)
 
 ## JSNote is managed by [Lerna](https://github.com/lerna/lerna)
 
-## How to start
+## How to install
 
-1. Locally
+`$ npm install jsnote-bw`
 
-> `$ npm run start`
+## How to run
 
-Lerna will run all the packages with `parallel` flag.</br>
-Navigate to <http://localhost:3000> to start.
-
-2. Using NPX
-
-> `$ npx jsnote-bw serve`
+`$ npx jsnote-bw serve`
 
 Navigate to <http://localhost:4005> to start.</br>
 Your codes will be saved in `notebook.js` file.</br>
 The file is in the folder where you execute the command.
+
+## Screenshot
+
+if you don't see this initial content below, please refresh the browser
+
+![app screenshot](./etc/app.jpg)
+
+## Run in local environment
+
+In `packages/local-client`, simply run `npm run start `.</br> Navigate to port 3000 as usual.
+
+## Support Redux DevTool (Chrome Extension)
+
+---
 
 # Development Notes
 
