@@ -35,7 +35,9 @@ export const serve = (
 		app.use(express.static(packageDir));
 	}
 
+	const initialPromise = () => {};
+
 	return new Promise<void>((resolve, reject) => {
 		app.listen(port, resolve).on('error', reject);
-	}).catch((err) => console.log(err.message));
+	});
 };

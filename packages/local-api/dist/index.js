@@ -28,8 +28,9 @@ var serve = function (port, filename, dirName, useProxy) {
         var packageDir = path_1.default.dirname(packagePath);
         app.use(express_1.default.static(packageDir));
     }
+    var initialPromise = function () { };
     return new Promise(function (resolve, reject) {
         app.listen(port, resolve).on('error', reject);
-    }).catch(function (err) { return console.log(err.message); });
+    });
 };
 exports.serve = serve;
