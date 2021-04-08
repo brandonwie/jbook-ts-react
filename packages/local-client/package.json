@@ -41,7 +41,8 @@
 		"redux-devtools-extension": "^2.13.9",
 		"redux-thunk": "2.3.0",
 		"typescript": "^4.2.3",
-		"web-vitals": "^1.1.1"
+		"web-vitals": "^1.1.1",
+		"monaco-jsx-highlighter": "^1.1.8"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -67,9 +68,6 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
-	},
-	"dependencies": {
-		"monaco-jsx-highlighter": "^1.1.8"
 	},
 	"keywords": [
 		"jsnote local-client",
