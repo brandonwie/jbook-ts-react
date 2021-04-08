@@ -70,5 +70,12 @@
 	},
 	"dependencies": {
 		"monaco-jsx-highlighter": "^1.1.8"
-	}
+	},
+	"keywords": [
+		"jsnote local-client",
+		"jsnote",
+		"notebook",
+		"javascript",
+		"js editor"
+	]
 }

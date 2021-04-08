@@ -1,4 +1,6 @@
-# Jupiter-Notebook-like Code Editor
+# JSNote
+
+JSNote is a simple JavaScript code editor with Markdown note functionality.
 
 - Author: Seokhyun Wie (Brandon)
 - Email: brandonwie.cs@gmail.com
@@ -9,13 +11,26 @@
 [![Redux](https://img.shields.io/badge/Redux-v7.2.2-informational?style=flat-sqaure)](https://redux.js.org/)
 [![esbuild--wasm](https://img.shields.io/badge/esbuild--wasm-v0.8.27-yellow)](https://github.com/evanw/esbuild)
 [![react-md-editor](https://img.shields.io/badge/@uiw--react--markdown--editor-v2.1.1-yellow)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
-[![build](https://img.shields.io/badge/build-onContruction-important)](https://github.com/brandonwie/jbook-ts-react)
+[![version](https://img.shields.io/badge/version-1.1.2-success)](https://github.com/brandonwie/jbook-ts-react)
 
-## How to run
+## JSNote is managed by [Lerna](https://github.com/lerna/lerna)
 
-> `$ jbook serve`
+## How to start
 
-Navigate to <http://localhost:4005> to edit.
+1. Locally
+
+> `$ npm run start`
+
+Lerna will run all the packages with `parallel` flag
+Navigate to <http://localhost:3000> to start.
+
+2. Using NPX
+
+> `$ npx jsnote-bw serve`
+
+Navigate to <http://localhost:4005> to start.
+Your codes will be saved in `notebook.js` file.
+The file is in the folder where you execute the command.
 
 # Development Notes
 

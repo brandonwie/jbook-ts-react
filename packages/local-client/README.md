@@ -1,10 +1,8 @@
-# JSNote - CLI version
-
-JSNote is a simple JavaScript code editor with Markdown note functionality.
+# JSNote - local client version
 
 - Author: Seokhyun Wie (Brandon)
 - Email: brandonwie.cs@gmail.com
-- Source: [Udemy](https://www.udemy.com/course/react-and-typescript-build-a-portfolio-project/)
+- Course: [Udemy](https://www.udemy.com/course/react-and-typescript-build-a-portfolio-project/)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-v4.2.3-informational?style=flat-sqaure)](https://www.typescriptlang.)
 [![React](https://img.shields.io/badge/React-v17.0.2-informational?style=flat-sqaure)](https://reactjs.org/)
@@ -13,15 +11,13 @@ JSNote is a simple JavaScript code editor with Markdown note functionality.
 [![react-md-editor](https://img.shields.io/badge/@uiw--react--markdown--editor-v2.1.1-yellow)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
 [![version](https://img.shields.io/badge/version-1.1.2-success)](https://github.com/brandonwie/jbook-ts-react)
 
-## This is CLI version
-
-Please note `npm install jsnote-bw` will not work.
-
 ## How to run
 
-> `$ npx jsnote-bw serve`
+`$ npm install`: download NPM packages
 
-Navigate to <http://localhost:4005> to start.
+`$ npm run start`: starting on `localhost:3000`
+
+Navigate to <http://localhost:3000> to start editing.
 
 ---
 
