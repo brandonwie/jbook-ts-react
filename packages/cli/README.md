@@ -27,12 +27,6 @@ Navigate to <http://localhost:4005> to start.</br>
 Your codes will be saved in `notebook.js` file.</br>
 The file is in the folder where you execute the command.
 
-## Screenshot
-
-if you don't see this initial content below, please refresh the browser
-
-![app screenshot](./etc/app.jpg)
-
 ## Support Redux DevTool (Chrome Extension)
 
 ---
