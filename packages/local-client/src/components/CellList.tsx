@@ -1,7 +1,7 @@
 import { useAppSelector } from '../hooks/use-typed-selector';
 import CellListItem from './CellListItem';
 import AddCell from './AddCell';
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useActions } from '../hooks/use-actions';
 
 const CellList: React.FC = () => {
@@ -12,13 +12,17 @@ const CellList: React.FC = () => {
 	});
 
 	const { fetchCells, saveCells } = useActions();
+	const [firstLoad, setFirstLoad] = useState(false);
 
 	useEffect(() => {
-		fetchCells();
+		if (firstLoad === true) {
+			fetchCells();
+		}
 	}, []);
 
 	useEffect(() => {
 		saveCells();
+		setFirstLoad(true);
 	}, []);
 
 	const renderedCells = cells.map((cell) => (
