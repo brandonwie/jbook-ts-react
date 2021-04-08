@@ -26,7 +26,7 @@ export const createCellsRouter = (filename: string, dirName: string) => {
 				await fs.writeFile(fullPath, '[]', 'utf8');
 				res.send([]);
 			} else {
-				throw err;
+				res.send({ error: err.message }).status(err.code);
 			}
 		}
 	});
@@ -37,9 +37,12 @@ export const createCellsRouter = (filename: string, dirName: string) => {
 		const { cells }: { cells: Cell[] } = req.body;
 
 		// Write the cells into the file
-		await fs.writeFile(fullPath, JSON.stringify(cells), 'utf8');
-
-		res.send({ status: 'ok' });
+		try {
+			await fs.writeFile(fullPath, JSON.stringify(cells), 'utf8');
+			res.send({ status: 'success' }).status(200);
+		} catch (err) {
+			res.send({ error: err.message }).status(err.code);
+		}
 	});
 
 	return router;

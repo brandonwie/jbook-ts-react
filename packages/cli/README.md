@@ -1,10 +1,10 @@
-# JSNote
+# JSNote - CLI version
 
 JSNote is a simple JavaScript code editor with Markdown note functionality.
 
 - Author: Seokhyun Wie (Brandon)
 - Email: brandonwie.cs@gmail.com
-- Course: [Udemy](https://www.udemy.com/course/react-and-typescript-build-a-portfolio-project/)
+- Source: [Udemy](https://www.udemy.com/course/react-and-typescript-build-a-portfolio-project/)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-v4.2.3-informational?style=flat-sqaure)](https://www.typescriptlang.)
 [![React](https://img.shields.io/badge/React-v17.0.2-informational?style=flat-sqaure)](https://reactjs.org/)
@@ -13,24 +13,17 @@ JSNote is a simple JavaScript code editor with Markdown note functionality.
 [![react-md-editor](https://img.shields.io/badge/@uiw--react--markdown--editor-v2.1.1-yellow)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
 [![version](https://img.shields.io/badge/version-1.1.2-success)](https://github.com/brandonwie/jbook-ts-react)
 
-## JSNote is managed by [Lerna](https://github.com/lerna/lerna)
+## This is CLI version
 
-## How to start
+Please note `npm install jsnote-bw` will not work.
 
-1. Locally
-
-> `$ npm run start`
-
-Lerna will run all the packages with `parallel` flag.</br>
-Navigate to <http://localhost:3000> to start.
-
-2. Using NPX
+## How to run
 
 > `$ npx jsnote-bw serve`
 
-Navigate to <http://localhost:4005> to start.</br>
-Your codes will be saved in `notebook.js` file.</br>
-The file is in the folder where you execute the command.
+Navigate to <http://localhost:4005> to start.
+
+---
 
 # Development Notes
 

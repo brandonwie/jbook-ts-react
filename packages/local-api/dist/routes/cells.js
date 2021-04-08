@@ -68,25 +68,33 @@ var createCellsRouter = function (filename, dirName) {
                     _a.sent();
                     res.send([]);
                     return [3 /*break*/, 5];
-                case 4: throw err_1;
+                case 4:
+                    res.send({ error: err_1.message }).status(err_1.code);
+                    _a.label = 5;
                 case 5: return [3 /*break*/, 6];
                 case 6: return [2 /*return*/];
             }
         });
     }); });
     router.post('/cells', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var cells;
+        var cells, err_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     cells = req.body.cells;
-                    // Write the cells into the file
-                    return [4 /*yield*/, promises_1.default.writeFile(fullPath, JSON.stringify(cells), 'utf8')];
+                    _a.label = 1;
                 case 1:
-                    // Write the cells into the file
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, promises_1.default.writeFile(fullPath, JSON.stringify(cells), 'utf8')];
+                case 2:
                     _a.sent();
-                    res.send({ status: 'ok' });
-                    return [2 /*return*/];
+                    res.send({ status: 'success' }).status(200);
+                    return [3 /*break*/, 4];
+                case 3:
+                    err_2 = _a.sent();
+                    res.send({ error: err_2.message }).status(err_2.code);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     }); });

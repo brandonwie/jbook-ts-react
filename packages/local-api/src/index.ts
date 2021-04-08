@@ -1,7 +1,6 @@
 import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import path from 'path';
-import cors from 'cors';
 import { createCellsRouter } from './routes/cells';
 
 export const serve = (
