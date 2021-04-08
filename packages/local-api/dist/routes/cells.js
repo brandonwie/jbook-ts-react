@@ -86,7 +86,7 @@ var createCellsRouter = function (filename, dirName) {
                     return [4 /*yield*/, promises_1.default.writeFile(fullPath, JSON.stringify(cells), 'utf8')];
                 case 2:
                     _a.sent();
-                    res.send({ status: 'success' }).status(200);
+                    res.send({ status: 'ok' });
                     return [3 /*break*/, 4];
                 case 3:
                     err_2 = _a.sent();

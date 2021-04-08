@@ -39,7 +39,7 @@ export const createCellsRouter = (filename: string, dirName: string) => {
 		// Write the cells into the file
 		try {
 			await fs.writeFile(fullPath, JSON.stringify(cells), 'utf8');
-			res.send({ status: 'success' }).status(200);
+			res.send({ status: 'ok' });
 		} catch (err) {
 			throw err;
 		}

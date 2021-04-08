@@ -72,7 +72,7 @@ exports.serveCommand = new commander_1.Command()
                         console.error('Port is in use. Try running on a different port.');
                     }
                     else {
-                        console.error('cli - serveCommand:', err_1.message);
+                        console.error('Something went wrong:', err_1.message);
                     }
                     process.exit(1);
                     return [3 /*break*/, 3];

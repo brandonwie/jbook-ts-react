@@ -33,7 +33,7 @@ export const serveCommand = new Command()
 			if (err.code === 'EADDRINUSE') {
 				console.error('Port is in use. Try running on a different port.');
 			} else {
-				console.error('cli - serveCommand:', err.message);
+				console.error('Something went wrong:', err.message);
 			}
 			process.exit(1);
 		}
